@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: findback
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+
+databases:
+  - name: findback-db
+    plan: free
+    databaseName: findback

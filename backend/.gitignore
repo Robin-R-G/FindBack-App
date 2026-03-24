@@ -1,0 +1,4 @@
+node_modules/
+findback.db
+*.log
+.env

@@ -1,0 +1,20 @@
+# Flutter
+flutter_app/.dart_tool/
+flutter_app/.flutter-plugins
+flutter_app/.flutter-plugins-dependencies
+flutter_app/.idea/
+flutter_app/.metadata
+flutter_app/build/
+flutter_app/*.iml
+flutter_app/pubspec.lock
+
+# Node.js
+backend/node_modules/
+backend/*.log
+backend/*.db
+backend/.env
+
+# Logs and system
+*.log
+.DS_Store
+*.apk
