@@ -65,9 +65,13 @@ if (isProduction) {
     console.log('Connected to PostgreSQL (cloud).');
 
 } else {
-    // ---- LOCAL DEV: SQLite ----
+    // ---- LOCAL DEV / STATIC HOSTS: SQLite ----
     const sqlite3 = require('sqlite3').verbose();
-    const dbPath = path.resolve(__dirname, 'findback.db');
+    // Use Glitch's persistent .data folder if on Glitch, otherwise local directory
+    const fs = require('fs');
+    const dataDir = fs.existsSync(path.resolve(__dirname, '.data')) ? path.resolve(__dirname, '.data') : __dirname;
+    const dbPath = path.resolve(dataDir, 'findback.db');
+    
     const sqlite = new sqlite3.Database(dbPath, (err) => {
         if (err) {
             console.error('Error opening SQLite database', err.message);

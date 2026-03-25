@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppConfig {
-  static const String defaultBaseUrl = 'https://findback.onrender.com';
+  static const String defaultBaseUrl = 'https://findback-app.glitch.me';
   static String _baseUrl = defaultBaseUrl;
 
   static String get baseUrl => _baseUrl;
