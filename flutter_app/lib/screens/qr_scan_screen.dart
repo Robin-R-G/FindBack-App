@@ -71,13 +71,7 @@ class _QRScanScreenState extends State<QRScanScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final scanAreaSize = 250.0;
-    final size = MediaQuery.of(context).size;
-    final scanArea = Rect.fromCenter(
-      center: Offset(size.width / 2, size.height / 2),
-      width: scanAreaSize,
-      height: scanAreaSize,
-    );
+    const scanAreaSize = 250.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -88,7 +82,6 @@ class _QRScanScreenState extends State<QRScanScreen> {
         children: [
           MobileScanner(
             controller: controller,
-            scanWindow: scanArea,
             onDetect: _onDetect,
           ),
           CustomPaint(

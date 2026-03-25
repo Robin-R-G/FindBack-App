@@ -6,7 +6,6 @@ import 'package:gal/gal.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
-import 'dart:typed_data';
 
 class QRDisplayScreen extends StatefulWidget {
   const QRDisplayScreen({super.key});
@@ -39,7 +38,7 @@ class _QRDisplayScreenState extends State<QRDisplayScreen> {
       final image = await _screenshotController.capture();
       if (image != null) {
         final directory = await getTemporaryDirectory();
-        final imagePath = await File('${directory.path}/FindBack_QR_${_studentId}.png').create();
+        final imagePath = await File('${directory.path}/FindBack_QR_$_studentId.png').create();
         await imagePath.writeAsBytes(image);
         
         await Share.shareXFiles([XFile(imagePath.path)], text: 'FindBack QR Code for $_name');
@@ -61,7 +60,7 @@ class _QRDisplayScreenState extends State<QRDisplayScreen> {
         if (!hasAccess) {
           await Gal.requestAccess();
         }
-        await Gal.putImageBytes(image, name: 'FindBack_QR_${_studentId}');
+        await Gal.putImageBytes(image, name: 'FindBack_QR_$_studentId');
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('QR Code saved to Gallery successfully!')),
@@ -75,12 +74,6 @@ class _QRDisplayScreenState extends State<QRDisplayScreen> {
         );
       }
     }
-  }
-
-  void _mockAction(String action) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('$action functionality would execute here.')),
-    );
   }
 
   @override
